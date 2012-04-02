@@ -29,7 +29,7 @@ if __name__  ==  '__main__':
   while True:
     candidates = all()
     found = search(candidates)
-    print found
+    print(found)
 
     if len(found): 
       subprocess.call('beep -f 1200 -l 200 -r 3', shell=True)
