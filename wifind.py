@@ -38,6 +38,8 @@ if __name__  ==  '__main__':
         subprocess.call('beep -f 500 -l 80', shell=True)
       else: 
         sleep(1)
+    except KeyboardInterrupt:
+      sys.exit()
     except:
       pass
  
