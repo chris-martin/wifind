@@ -20,7 +20,7 @@ def get_file_lines(x):
 
 def all():
   iwl = IWList(sys.argv[1])
-  return list(iwl.getData().itervalues())
+  return list(iwl.getData().values())
 
 def search(candidates):
   return filter(is_match, candidates)
