@@ -6,13 +6,23 @@ import subprocess
 from time import sleep
 
 def is_match(x):
-  return regex(x) and not ignore(x)
+  if ignore(x): return False
+  return ssid(x) or mac(x)
 
-def regex(x):
-  return re.match(sys.argv[2], x['ESSID'], re.I)
+def ssid(x):
+  regex = get_file_line('ssid')
+  return re.match(regex, x['ESSID'], re.I)
+
+def mac(x):
+  regex = get_file_line('mac')
+  return re.match(regex, x['MAC'], re.I)
 
 def ignore(x):
   return path.exists('ignore') and x['ESSID'] in get_file_lines('ignore')
+
+def get_file_line(x):
+  lines = list(get_file_lines(x))
+  return lines[0] if len(lines) else None
 
 def get_file_lines(x):
   if not path.exists(x): return []

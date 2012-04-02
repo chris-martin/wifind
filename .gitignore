@@ -1,5 +1,7 @@
 IWList.py
 ignore
+mac
+ssid
 *.swp
 __pycache__
 
