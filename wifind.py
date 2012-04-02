@@ -23,7 +23,7 @@ def all():
   return list(iwl.getData().values())
 
 def search(candidates):
-  return filter(is_match, candidates)
+  return list(filter(is_match, candidates))
 
 if __name__  ==  '__main__':
   while True:
