@@ -39,6 +39,7 @@ if __name__  ==  '__main__':
   while True:
     try:
       candidates = all()
+      print(set(map(lambda x: x['ESSID'], candidates)))
       found = search(candidates)
       print(found)
       sys.stdout.flush()
