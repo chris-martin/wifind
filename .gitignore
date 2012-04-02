@@ -1,2 +1,5 @@
 IWList.py
 ignore
+*.swp
+__pycache__
+

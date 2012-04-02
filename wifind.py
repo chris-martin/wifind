@@ -27,14 +27,17 @@ def search(candidates):
 
 if __name__  ==  '__main__':
   while True:
-    candidates = all()
-    found = search(candidates)
-    print(found)
+    try:
+      candidates = all()
+      found = search(candidates)
+      print(found)
 
-    if len(found): 
-      subprocess.call('beep -f 1200 -l 200 -r 3', shell=True)
-    elif len(candidates):
-      subprocess.call('beep -f 500 -l 80', shell=True)
-    else: 
-      sleep(1)
+      if len(found): 
+        subprocess.call('beep -f 1200 -l 200 -r 3', shell=True)
+      elif len(candidates):
+        subprocess.call('beep -f 500 -l 80', shell=True)
+      else: 
+        sleep(1)
+    except:
+      pass
  
