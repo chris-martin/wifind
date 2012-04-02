@@ -2,6 +2,7 @@ IWList.py
 ignore
 mac
 ssid
+log
 *.swp
 __pycache__
 
