@@ -7,6 +7,7 @@ from time import sleep
 
 def is_match(x):
   if ignore(x): return False
+  if not encryption(x): return False
   return ssid(x) or mac(x)
 
 def ssid(x):
@@ -16,6 +17,10 @@ def ssid(x):
 def mac(x):
   regex = get_file_line('mac')
   return re.match(regex, x['MAC'], re.I)
+
+def encryption(x):
+  regex = get_file_line('encryption')
+  return re.match(regex, x['Encryption'], re.I)
 
 def ignore(x):
   return path.exists('ignore') and x['ESSID'] in get_file_lines('ignore')
@@ -39,9 +44,8 @@ if __name__  ==  '__main__':
   while True:
     try:
       candidates = all()
-      print(set(map(lambda x: x['ESSID'], candidates)))
       found = search(candidates)
-      print(found)
+      print(found if len(found) else set(map(lambda x: x['ESSID'], candidates)))
       sys.stdout.flush()
 
       if len(found): 
