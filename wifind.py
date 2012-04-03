@@ -49,7 +49,7 @@ if __name__  ==  '__main__':
       sys.stdout.flush()
 
       if len(found): 
-        subprocess.call('beep -f 1200 -l 200 -r 3', shell=True)
+        subprocess.call('beep -f 1200 -l 200 -r 5', shell=True)
       elif len(candidates):
         subprocess.call('beep -f 500 -l 80', shell=True)
       else: 
