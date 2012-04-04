@@ -5,6 +5,8 @@ from os import path
 import subprocess
 from time import sleep
 
+iface = sys.argv[1]
+
 def is_match(x):
   if ignore(x): return False
   if not encryption(x): return False
@@ -34,7 +36,7 @@ def get_file_lines(x):
   return map(lambda s: s.strip(), open(x, 'r').readlines())
 
 def all():
-  iwl = IWList(sys.argv[1])
+  iwl = IWList(iface)
   return list(iwl.getData().values())
 
 def search(candidates):
@@ -53,7 +55,10 @@ if __name__  ==  '__main__':
       elif len(candidates):
         subprocess.call('beep -f 500 -l 80', shell=True)
       else: 
-        sleep(1)
+        subprocess.call('ip link set %s down' % iface, shell=True)
+        sleep(0.5)
+        subprocess.call('ip link set %s up' % iface, shell=True)
+        sleep(0.5)
     except KeyboardInterrupt:
       sys.exit()
     except:
